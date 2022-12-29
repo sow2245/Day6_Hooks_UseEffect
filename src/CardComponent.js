@@ -2,11 +2,11 @@ const CardComponent=(props)=>{
     const teamMembers=props.teamMembers;
     return (
         <div id="card" className="cardClass">
-            <img src={teamMembers.img}/>
+            <img src={teamMembers.avatar_url}/>
             <h2>{teamMembers.name}</h2>
-            <h3>{teamMembers.company}</h3>
-            <h4>{teamMembers.address}</h4>
-            <h5>{teamMembers.designation}</h5>
+            <h3>Company/School Name : {teamMembers.company ? teamMembers.company : "NA"}</h3>
+            <h4>Location : {teamMembers.location ? teamMembers.location : "NA"}</h4>
+            <h5>Public Repositories : {teamMembers.public_repos}</h5>
         </div>
     )
 };
