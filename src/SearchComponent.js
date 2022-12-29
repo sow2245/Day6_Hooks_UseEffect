@@ -1,7 +1,9 @@
 import { useState } from "react";
 
-const searchTeamData=(searchText,listOfTeamMembers)=>{
+const searchTeamData=(searchText,listOfTeamMembers,setIsSearched)=>{
     //filtering data for multiple fields
+      const setValue = (searchText != "" || searchText != null);
+      setIsSearched(setValue);
       const searchTextToLowerCase=searchText.toLowerCase();
       return listOfTeamMembers?.filter((team)=>
          (team.name.toLowerCase().includes(searchTextToLowerCase)
@@ -9,7 +11,7 @@ const searchTeamData=(searchText,listOfTeamMembers)=>{
       );
 };
 
-const SearchComponent =({listOfTeamMembers , setFilteredData})=>{
+const SearchComponent =({listOfTeamMembers , setFilteredData , setIsSearched})=>{
     const [searchText,setSearchText] = useState("");
 
     const settingValueForSetSearchText=(e)=>{
@@ -22,7 +24,7 @@ const SearchComponent =({listOfTeamMembers , setFilteredData})=>{
             onSubmit={
                 (e)=>{
                     e.preventDefault();
-                    const filteredData = searchTeamData(searchText,listOfTeamMembers);
+                    const filteredData = searchTeamData(searchText,listOfTeamMembers,setIsSearched);
                     setFilteredData(filteredData);
                 }
             }>
