@@ -55,8 +55,8 @@ const BodyComponent=()=>{
 
     return(
     <div className="card-container">
-        <SearchComponent setFilteredData={setFilteredData}/>
-        <CardContainer filteredData={listOfTeamMembers}/>
+        <SearchComponent listOfTeamMembers={listOfTeamMembers} setFilteredData={setFilteredData}/>
+        <CardContainer filteredData={filteredData.length !=0 ? filteredData : listOfTeamMembers}/>
     </div>);
 };
 
